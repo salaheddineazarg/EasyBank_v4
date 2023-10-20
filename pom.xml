@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>test_h</artifactId>
+    <artifactId>easybank_4</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>test_h</name>
+    <name>easybank_4</name>
     <packaging>war</packaging>
 
     <properties>
