@@ -1,7 +1,6 @@
-package com.java.easybank_v4.Interfaces;
+package com.java.easybank_v4.dao.Interfaces;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface DataI <Type, IdType>{
