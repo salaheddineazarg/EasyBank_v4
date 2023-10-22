@@ -1,6 +1,6 @@
 package com.java.easybank_v4.services;
 
-import com.java.easybank_v4.classes.Agence;
+import com.java.easybank_v4.Entities.Agence;
 import com.java.easybank_v4.dao.Interfaces.AgenceI;
 
 import java.util.Optional;

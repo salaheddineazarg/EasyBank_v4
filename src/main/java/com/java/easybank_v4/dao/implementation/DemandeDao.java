@@ -1,30 +1,31 @@
 package com.java.easybank_v4.dao.implementation;
 
 import com.java.easybank_v4.Config.HibernateUtil;
-import com.java.easybank_v4.Entities.Agence;
-import com.java.easybank_v4.dao.Interfaces.AgenceI;
+import com.java.easybank_v4.Entities.DemanderCredit;
+import com.java.easybank_v4.dao.Interfaces.DemandeI;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 import java.util.Optional;
 
-public class AgenceDao implements AgenceI {
+public class DemandeDao implements DemandeI {
+
 
     @Override
-    public Optional<Agence> ajoute(Agence agence) {
+    public Optional<DemanderCredit> ajoute(DemanderCredit demande) {
         Transaction tx = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
-            session.persist(agence);
+            session.persist(demande); // Utilisez persist pour ajouter l'entité à la base de données
             tx.commit();
-            return Optional.of(agence); // Return the created entity wrapped in an Optional
+            return Optional.of(demande); // Retournez l'entité ajoutée
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
             e.printStackTrace();
-            return Optional.empty(); // Return an empty Optional in case of an exception
+            return Optional.empty();
         }
     }
 
@@ -34,17 +35,17 @@ public class AgenceDao implements AgenceI {
     }
 
     @Override
-    public Optional<Agence> modifier(Agence agence) {
+    public Optional<DemanderCredit> modifier(DemanderCredit demanderCredit) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Agence> chercherParId(Integer id) {
+    public Optional<DemanderCredit> chercherParId(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public List<Agence> afficher() {
+    public List<DemanderCredit> afficher() {
         return null;
     }
 }

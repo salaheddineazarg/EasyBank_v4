@@ -1,14 +1,13 @@
 package com.java.easybank_v4.controllers;
 
 
-import com.java.easybank_v4.classes.Agence;
+import com.java.easybank_v4.Entities.Agence;
 import com.java.easybank_v4.dao.implementation.AgenceDao;
 import com.java.easybank_v4.services.AgenceService;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.io.PrintWriter;
