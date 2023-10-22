@@ -1,10 +1,9 @@
-package com.java.easybank_v4.classes;
+package com.java.easybank_v4.Entities;
 
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
