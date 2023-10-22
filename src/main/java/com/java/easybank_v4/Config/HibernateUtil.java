@@ -1,7 +1,7 @@
 package com.java.easybank_v4.Config;
 
 
-import com.java.easybank_v4.classes.Agence;
+import com.java.easybank_v4.Entities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -31,6 +31,15 @@ public class HibernateUtil {
 
 
                 configuration.addAnnotatedClass(Agence.class);
+                configuration.addAnnotatedClass(DemanderCredit.class);
+                configuration.addAnnotatedClass(Client.class);
+                configuration.addAnnotatedClass(Employee.class);
+                configuration.addAnnotatedClass(Simulation.class);
+                configuration.addAnnotatedClass(Compte.class);
+                configuration.addAnnotatedClass(CompteCourant.class);
+                configuration.addAnnotatedClass(CompteEpargne.class);
+
+
 
                 configuration.setProperties(settings);
 
