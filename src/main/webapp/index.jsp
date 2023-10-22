@@ -33,7 +33,7 @@
         </div>
         <div class="d-flex Btns">
             <button class="BtnOpenAcc">
-               Open Acount
+               Simulation
             </button>
             <button class="BtnGetTouch">
               Get in touch

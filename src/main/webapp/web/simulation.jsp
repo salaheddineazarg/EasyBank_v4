@@ -20,13 +20,14 @@
 <body class="overflow-y-hidden">
 <jsp:include page="../component/navBar.jsp" />
 
-<section class="w-full bg-blue-50 h-[100vh] padding-20">
-    <div class="d-flex-col mx-auto mt-10 h-auto bg-white w-[70%] border-2 border-blue-400 rounded-md">
+<section class="w-full bg-blue-50 h-[100vh]  position-relative padding-20">
+    <div class="d-flex-col mx-auto mt-10 w-[70%] bg-white h-auto border-2 border-blue-400 rounded-md">
+    <div id="step1" class="d-flex-col  w-full  h-auto bg-white  ">
     <div class=" d-flex ">
     <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[200px]">
     <label class="text-xl text-lime-700 font-poppins">Montant(en DH)</label>
         <input id="display-value"  value="5000 DH"   class="border-none w-[100px] rounded-md shadow-inner inset-2 p-1 text-base font-bold text-blue-600 " readonly type="text">
-        <input id="default-range" type="range" min="5000" max="600000" onmousemove="switchValue(value)" value="5000" class="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+        <input id="default-range" step="1000" type="range" min="5000" max="600000" onmousemove="switchValue(value)" value="5000" class="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
         <p class="font-normal text-sm text-gray-600">Min 5000 DH - Max 600000 DH</p>
     </div>
    <div class="w-[50%] border-b  p-5 d-flex-col gap-5 p-4 border-gray-300 h-[200px]">
@@ -41,27 +42,64 @@
      <p class="text-md font-bold font-poppins text-lime-700">
          Expected monthly payment :
      </p>
-      <input id="totalInput" type="text" value="salah" class="border-none w-[100px] rounded-md shadow-inner inset-2 p-1 text-base font-bold text-blue-600 " >
+      <input id="totalInput" type="text" value="" class="border-none w-[100px] rounded-md shadow-inner inset-2 p-1 text-base font-bold text-blue-600 " >
 
         </div>
-
-
-       <button class=" w-[100px] shadow-2xl h-[42px] rounded-full  text-white bg-blue-600">
-           Next
-       </button>
     </div>
+    </div>
+    <div id="step2" class="hidden  w-full   h-auto bg-white  ">
+        <div class=" d-flex ">
+            <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
+                <label class="text-xl text-lime-700 font-poppins">Employee</label>
+                <select>
+                    <option>Employee 1</option>
+                    <option>Employee 2</option>
+                    <option>Employee 3</option>
+                </select>
+            </div>
+            <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
+                <label class="text-xl text-lime-700 font-poppins">Client</label>
+                <select>
+                    <option>Client 1</option>
+                    <option>Client 2</option>
+                    <option>Client 3</option>
+                </select>
+            </div>
+        </div>
+    </div>
+        <form id="step3" class="hidden  w-full  h-auto bg-white  ">
+            <div class=" d-flex ">
+                <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
+                    <label class="text-md text-lime-700 font-poppins">Nom</label>
+                    <input type="text" class="w-full h-[40px] p-1 text-base font-bold text-blue-600 rounded-md border border-blue-300 ">
+                </div>
+                <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
+                    <label class="text-md text-lime-700 font-poppins">Email</label>
+                    <input type="text" class="w-full h-[40px] p-1 text-base font-bold text-blue-600 rounded-md border border-blue-300 ">
+                </div>
+            </div>
+            <div class=" d-flex ">
+                <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
+                    <label class="text-md text-lime-700 font-poppins">Montant</label>
+                    <input id="montantForm" type="text" class="w-full p-1 text-base font-bold text-blue-600 h-[40px] rounded-md border border-blue-300 ">
+                </div>
+                <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
+                    <label class="text-md text-lime-700 font-poppins">Mensualité</label>
+                    <input id="mensualiteForm" type="text" class="w-full p-1 text-base font-bold text-blue-600 h-[40px] rounded-md border border-blue-300 ">
+                </div>
+            </div>
+
+        </form>
+     <div class="w-full d-flex-col items-center justify-center h-[70px] border-t border-slate-300">
+       <button  onclick="addInfo()" class="w-[132px] text-white  rounded-xl h-[47px] bg-blue-600 ">Confirmé</button>
+     </div>
     </div>
 </section>
 
-<section id="slideInfo" class="w-[300px] h-[98vh] position-absolute top-[13%] left-[78%] bg-white">
-  <div class="w-full h-auto">
-   <div class="w-full h-[40px] p-2 bg-gray-300 font-semibold ">
-       Détails de mon crédit
-   </div>
-    <div class="w-[91%] pl-2 pt-1 border-b border-slate-300 d-flex  justify-between h-[34px]">
-       <p class="text-md font-normal text-slate-600">Montant :</p>
-       <span class="text-blue-600 font-semibold text-md  ">1000 Dh</span>
-    </div>
+<section id="slideInfo" class="w-[300px] h-[98vh] position-absolute top-[13%] left-[98%] bg-white">
+  <div id="detailsArea" class="w-full d-flex-col h-auto">
+   <div></div>
+
   </div>
 
 <span id="buttonSlide" onclick="displaySlide()" class="w-[50px] bg-blue position-absolute rotate-[181deg] top-[40%] left-[-9%] text-center h-[50px] rounded-full"><i class="fa-solid fa-arrow-right text-white mt-3 text-lg"></i></span>
@@ -69,6 +107,9 @@
 
 
 
-<script src="../js/main.js"></script>
+<script src="../js/main.js">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

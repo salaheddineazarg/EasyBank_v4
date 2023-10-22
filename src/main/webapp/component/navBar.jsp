@@ -14,10 +14,10 @@
   <div class="btn_list">
     <ul class="ulNavbar" >
       <li class="list"><a class="alink"  href="#">Home</a></li>
-      <li class="list"><a class="alink" href="#"> About us</a></li>
-      <li class="list"><a class="alink" href="#">Contact</a></li>
+      <li class="list"><a class="alink" href="#aboutus"> About us</a></li>
+      <li class="list"><a class="alink" href="#contact">Contact</a></li>
 
     </ul>
-    <button class="BtnOpenAcc">Open Account</button>
+    <a href="simulation" class="BtnOpenAcc">Simulation</a>
   </div>
 </nav>
