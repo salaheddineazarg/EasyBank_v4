@@ -19,7 +19,7 @@ public class DemandeService {
     public void afficher() {
         List<DemanderCredit> optdemande=demandeI.afficher();
         for (DemanderCredit demande1 : optdemande) {
-            System.out.println("ID : " + demande1.getNumero());
+            System.out.println("ID : " + demande1.getId());
             System.out.println("Montant : " + demande1.getCapitalEmprunte());
             System.out.println("Durée : " + demande1.getNombreMensualite());
             System.out.println("Remarques : " + demande1.getRemarques());

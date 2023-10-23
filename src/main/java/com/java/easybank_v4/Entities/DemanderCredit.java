@@ -11,15 +11,15 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "demande")
+@Table(name = "demandecredit")
 @Getter
 @Setter
 public class DemanderCredit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numero;
+    private int id;
 
-
+    @Enumerated(EnumType.STRING)
     private Etat etat;
 
 
