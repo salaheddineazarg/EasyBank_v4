@@ -17,9 +17,9 @@ public class DemandeDao implements DemandeI {
         Transaction tx = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
-            session.persist(demande); // Utilisez persist pour ajouter l'entité à la base de données
+            session.persist(demande);
             tx.commit();
-            return Optional.of(demande); // Retournez l'entité ajoutée
+            return Optional.of(demande);
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -46,6 +46,13 @@ public class DemandeDao implements DemandeI {
 
     @Override
     public List<DemanderCredit> afficher() {
-        return null;
+
+        List<DemanderCredit> demandes;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            demandes = session.createQuery("FROM DemanderCredit").list();
+        }
+        return demandes;
     }
+
+
 }

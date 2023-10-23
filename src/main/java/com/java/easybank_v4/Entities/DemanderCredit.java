@@ -22,7 +22,9 @@ public class DemanderCredit {
 
     private Etat etat;
 
-    private Simulation simulation;
+
+    private Double capitalEmprunte;
+    private int nombreMensualite;
 
     private String remarques;
 

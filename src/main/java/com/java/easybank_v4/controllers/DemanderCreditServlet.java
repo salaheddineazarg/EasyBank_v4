@@ -4,6 +4,7 @@ import com.java.easybank_v4.Entities.Agence;
 import com.java.easybank_v4.Entities.Client;
 import com.java.easybank_v4.Entities.DemanderCredit;
 import com.java.easybank_v4.Entities.Simulation;
+import com.java.easybank_v4.dao.Interfaces.DemandeI;
 import com.java.easybank_v4.dao.implementation.DemandeDao;
 import com.java.easybank_v4.services.DemandeService;
 import jakarta.servlet.ServletException;
@@ -16,7 +17,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 @WebServlet(name = "demande", urlPatterns ={"/demande_test"} )
 public class DemanderCreditServlet extends HttpServlet {
-    private DemandeService demandeService=new DemandeService(new DemandeDao());
+    private DemandeI demandeDao=new DemandeDao();
+    private DemandeService demandeService=new DemandeService(demandeDao);
+    double mensualite;
     @Override
     public void init() throws ServletException {
         DemanderCredit demande=new DemanderCredit();
@@ -28,25 +31,28 @@ public class DemanderCreditServlet extends HttpServlet {
 
         int nombremensualite=10;
         double tauxMensuel = (taux / 12) / 100;
-        double mensualite = (capitale * tauxMensuel * Math.pow(1 + tauxMensuel, nombremensualite))
+         mensualite = (capitale * tauxMensuel * Math.pow(1 + tauxMensuel, nombremensualite))
                 / (Math.pow(1 + tauxMensuel, nombremensualite) - 1);
 
 
 
 
             Simulation s= new Simulation(capitale,taux,nombremensualite);
-            demande.setSimulation(s);
+            demande.setCapitalEmprunte(s.getCapitalEmprunte());
+            demande.setNombreMensualite(s.getNombreMensualite());
             System.out.printf("entrer le code d'un client : ");
             Client c= new Client();
             c.setId(1);
             demande.setClient(c);
 
             demande.setRemarques("Remarque");
+            demandeService.afficher();
             boolean optDm=demandeService.ajouter(demande);
             if(optDm)
             {
                 System.out.println("Le demande a ete bien traite et enregistré\n");
             }
+            demandeService.afficher();
 
     }
 
@@ -56,7 +62,7 @@ public class DemanderCreditServlet extends HttpServlet {
         String message="demande page";
         PrintWriter out = resp.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + message + "</h1>"+ mensualite);
         out.println("</body></html>");
     }
 
