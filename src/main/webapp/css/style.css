@@ -2,6 +2,8 @@
    margin: 0px;
     padding: 0px;
     border: none;
+    list-style: none;
+    text-decoration: none;
 }
 html {
     scroll-behavior: smooth;
@@ -58,16 +60,16 @@ body{
     gap: 24px;
 }
 .BtnOpenAcc{
-    height: 52px;
-    width: 148px;
+    height: 29px;
+    padding: 12px;
+    width: 103px;
+    text-align: center;
     background-color: blue;
     border: none;
     font-family: 'Poppins', sans-serif;
     font-weight: bolder;
     color: white;
     border-radius: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
 
 }
 .BtnGetTouch{
