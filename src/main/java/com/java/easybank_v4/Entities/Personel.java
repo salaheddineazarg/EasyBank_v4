@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Persone {
+public class Personel {
     @Id
     @GeneratedValue
     protected Integer id;

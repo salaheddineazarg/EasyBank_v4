@@ -33,6 +33,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Agence.class);
                 configuration.addAnnotatedClass(DemanderCredit.class);
                 configuration.addAnnotatedClass(Client.class);
+                configuration.addAnnotatedClass(Employee.class);
 
                 configuration.setProperties(settings);
 

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "client")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Client extends Persone {
+public class Client extends Personel {
     private String address;
 }

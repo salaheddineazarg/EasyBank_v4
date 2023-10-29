@@ -12,21 +12,21 @@ public class DemandeService {
     public DemandeService(DemandeI demandeI) {
         this.demandeI = demandeI;
     }
-    public boolean ajouter(DemanderCredit demande) {
+    public Optional<DemanderCredit> ajouter(DemanderCredit demande) {
         Optional<DemanderCredit> optdemande=demandeI.ajoute(demande);
-        return optdemande.isPresent();
+        return optdemande;
     }
-    public void afficher() {
-        List<DemanderCredit> optdemande=demandeI.afficher();
-        for (DemanderCredit demande1 : optdemande) {
-            System.out.println("ID : " + demande1.getNumero());
-            System.out.println("Montant : " + demande1.getCapitalEmprunte());
-            System.out.println("Durée : " + demande1.getNombreMensualite());
-            System.out.println("Remarques : " + demande1.getRemarques());
-            System.out.println("Client Code : " + demande1.getClient().getId());
-            System.out.println("-------------");
+    public List<DemanderCredit>  afficher() {
+        return demandeI.afficher();
+    }
+    public boolean changerEtat(int demandeId,String etat){
+        try {
+            if (demandeI.changerEtat(demandeId,etat)){
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
-
-
+        return false;
     }
 }

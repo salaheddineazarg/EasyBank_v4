@@ -24,36 +24,6 @@ public class DemanderCreditServlet extends HttpServlet {
     public void init() throws ServletException {
         DemanderCredit demande=new DemanderCredit();
         Simulation simulation= new Simulation();
-
-        Double capitale=10000.00;
-
-        Double taux=500.00;
-
-        int nombremensualite=10;
-        double tauxMensuel = (taux / 12) / 100;
-         mensualite = (capitale * tauxMensuel * Math.pow(1 + tauxMensuel, nombremensualite))
-                / (Math.pow(1 + tauxMensuel, nombremensualite) - 1);
-
-
-
-
-            Simulation s= new Simulation(capitale,taux,nombremensualite);
-            demande.setCapitalEmprunte(s.getCapitalEmprunte());
-            demande.setNombreMensualite(s.getNombreMensualite());
-            System.out.printf("entrer le code d'un client : ");
-            Client c= new Client();
-            c.setId(1);
-            demande.setClient(c);
-
-            demande.setRemarques("Remarque");
-            demandeService.afficher();
-            boolean optDm=demandeService.ajouter(demande);
-            if(optDm)
-            {
-                System.out.println("Le demande a ete bien traite et enregistré\n");
-            }
-            demandeService.afficher();
-
     }
 
     @Override

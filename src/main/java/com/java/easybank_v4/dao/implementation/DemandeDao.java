@@ -55,4 +55,28 @@ public class DemandeDao implements DemandeI {
     }
 
 
+    @Override
+    public boolean changerEtat(int demandeId,String etat) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            DemanderCredit demande = session.get(DemanderCredit.class, demandeId);
+            if (demande != null) {
+                demande.setEtat(etat);
+                session.update(demande);
+
+                transaction.commit();
+                return true;
+            }
+       } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

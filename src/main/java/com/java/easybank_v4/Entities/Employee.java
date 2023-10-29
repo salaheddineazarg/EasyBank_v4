@@ -1,6 +1,8 @@
 package com.java.easybank_v4.Entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,8 +14,9 @@ import java.time.LocalDate;
 @Table(name = "employee")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Employee extends Persone {
+public class Employee extends Personel {
     private String email;
     private LocalDate dateRecrutement;
-    private Agence agence;
+
+
 }
