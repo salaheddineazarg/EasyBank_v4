@@ -14,26 +14,28 @@ import java.time.LocalDate;
 @Table(name = "demandecredit")
 @Getter
 @Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class DemanderCredit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Enumerated(EnumType.STRING)
-    private Etat etat;
+//    @Enumerated(EnumType.STRING)
+ //   private CreditStatut etat;
+    private String etat="EnAttente";
 
 
-    private Double capitalEmprunte;
-    private int nombreMensualite;
-
-    private String remarques;
-
-    @Column(name = "date_demande")
-    private LocalDate date;
+    @NonNull private double taux;
+    @NonNull private double montant;
+    @NonNull private double mensualite;
+    @NonNull private int dure;
+    @NonNull private String remarks;
+    private LocalDate date=LocalDate.now();
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Client client;
+    @NonNull private Client client;
 
     // Ajoutez les annotations JPA appropriées pour les relations et les colonnes
 }

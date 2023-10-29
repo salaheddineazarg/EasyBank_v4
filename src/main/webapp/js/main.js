@@ -14,7 +14,7 @@ function Nodisplay() {
 
 
 function calculateMonthlyPayment(M, n) {
-    let t = 0.03 / 12;
+    let t = 0.035 / 12;
     let denominator = 1 - Math.pow((1 + t),-n);
 
     return (M * t) / denominator;
@@ -72,7 +72,7 @@ function addInfo() {
             </div>
             <div class="w-[91%] pl-2 pt-1 border-b border-slate-300 d-flex justify-between h-[34px]">
                 <p class="text-md font-normal text-slate-600">Montant :</p>
-                <span class="text-blue-600 font-semibold text-md">${defaultRangeInput} DH</span>
+                <span class="text-blue-600 font-semibold text-md">${ defaultRangeInput} DH</span>
             </div>
              <div class="w-[91%] pl-2 pt-1 border-b border-slate-300 d-flex justify-between h-[34px]">
                 <p class="text-md font-normal text-slate-600">Durée :</p>
@@ -102,9 +102,10 @@ function addInfo() {
             </div>
         </div>`);
 
-        document.getElementById("montantForm").value =
-            +" DH" ;
-        document.getElementById("mensualiteForm").value =TotalInput.value + " DH";
+        document.getElementById("montantForm").value = defaultRangeInput  ;
+        console.log("test "+defaultRangeMounth);
+
+        document.getElementById("mensualiteForm").value =TotalInput.value ;
 
     }
     else if (ArrayElement[2].includes("d-flex-col")){
@@ -121,8 +122,14 @@ function addInfo() {
             toast: true,
         }).then((result) => {
                 if(result.isConfirmed){
-
-
+                    // Sélectionnez le formulaire
+                    var formulaire = document.getElementById("step3");
+                    var champInput = document.createElement("input");
+                    champInput.type = "hidden"; // Type de champ (peut être "text", "password", etc.)
+                    champInput.name = "dure"; // Nom du champ (utilisé pour l'envoi de données)
+                    champInput.value = defaultRangeMounth; // Valeur par défaut du champ
+                    formulaire.appendChild(champInput);
+                    document.getElementById("step3").submit();
                 }
             })
     }
@@ -135,26 +142,33 @@ function addInfo() {
 
 $(document).ready(function() {
 
-    $('#clientSelect').change(function() {
-        console.log($(this).val());
+    $('.clientSelect').on('change',function() {
+        console.log($(this).children("option:selected").attr("id"));
         var clientId = $(this).val();
 
         // Envoyez une requête Ajax pour obtenir les détails du client
         $.ajax({
             type: 'GET',
-            url: '//clientlist', //
-            data: { clientId: clientId },
+            url: '/clientlist',
+            data: {
+                clientId: clientId ,
+
+            },
             success: function(client) {
                 var test=$('#clientNom').val(client.nom);
-                $('#clientNom').val(client.nom);
-                $('#clientEmail').val(client.email);
-                console.log("cfgvhbjnbvc");
+                $('#clientNom').text(client.nom);
+                $('#clientAddresse').val(client.address);
+                $('#clientId_inp').val(client.id);
+
+                console.log("cfgvhbjnbvc"+ client.address);
+                console.log("ID du client : " + $('#clientId_inp').val());
             },
             error: function() {
                 console.log("error")
             }
         });
     });
+
 });
 
 

@@ -20,7 +20,7 @@
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 </head>
 <body class="overflow-y-hidden">
@@ -66,46 +66,53 @@
             <div class=" d-flex ">
                 <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
                     <label class="text-xl text-lime-700 font-poppins">Employee</label>
-                    <c:forEach var="employee" items="${employees}">
-                <select>
-                    <option id=${employee.id}>${employee.nom}</option>
-                    <option >test</option>
-                </select>
-                    </c:forEach>
+
+                    <select>
+                        <c:forEach var="employee" items="${employees}">
+                            <option>test</option>
+                            <option id=${employee.id}>${employee.id}</option>
+
+                        </c:forEach>
+                    </select>
+
                 </div>
                 <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
                     <label class="text-xl text-lime-700 font-poppins">Client</label>
-                    <c:forEach var="client" items="${clients}">
-                        <select>
-                            <option id=${client.id}>${client.nom}</option>
-                        </select>
-                    </c:forEach>
+
+                    <select class="clientSelect">
+                        <option id=0 selected="selected">select</option>
+                        <c:forEach var="client" items="${clients}">
+                            <option value= ${client.id}>${client.nom}</option>
+                        </c:forEach>
+                    </select>
+
 
                 </div>
             </div>
         </div>
-        <form id="step3" class="hidden  w-full  h-auto bg-white  ">
+        <form id="step3" class="hidden  w-full  h-auto bg-white  " method="POST" action="/simulation">
             <div class=" d-flex ">
+                <input type="hidden" name="clientId_inp" value="" id="clientId_inp">
                 <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
                     <label class="text-md text-lime-700 font-poppins">Nom</label>
-                    <input type="text"
+                    <input id="clientNom" type="text"
                            class="w-full h-[40px] p-1 text-base font-bold text-blue-600 rounded-md border border-blue-300 ">
                 </div>
                 <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
                     <label class="text-md text-lime-700 font-poppins">Email</label>
-                    <input type="text"
+                    <input id="clientAddresse" type="text"
                            class="w-full h-[40px] p-1 text-base font-bold text-blue-600 rounded-md border border-blue-300 ">
                 </div>
             </div>
             <div class=" d-flex ">
                 <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
                     <label class="text-md text-lime-700 font-poppins">Montant</label>
-                    <input id="montantForm" type="text"
+                    <input id="montantForm" name="montant" type="text"
                            class="w-full p-1 text-base font-bold text-blue-600 h-[40px] rounded-md border border-blue-300 ">
                 </div>
                 <div class="w-[50%] border-b  border-r-2 p-5 d-flex-col gap-5 p-4 border-gray-300 h-[150px]">
                     <label class="text-md text-lime-700 font-poppins">Mensualité</label>
-                    <input id="mensualiteForm" type="text"
+                    <input id="mensualiteForm" name="mensualite" type="text"
                            class="w-full p-1 text-base font-bold text-blue-600 h-[40px] rounded-md border border-blue-300 ">
                 </div>
             </div>
@@ -128,7 +135,7 @@
             class="fa-solid fa-arrow-right text-white mt-3 text-lg"></i></span>
 </section>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/main.js">
 </script>
 

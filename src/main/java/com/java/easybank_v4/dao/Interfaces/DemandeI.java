@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface DemandeI extends DataI<DemanderCredit,Integer>{
 
-
+    boolean changerEtat(int demandeId,String etat);
 }
